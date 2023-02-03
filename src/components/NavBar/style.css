@@ -1,0 +1,23 @@
+* {margin:0; padding:0; text-decoration: none;}
+
+.navistyle {
+	border-bottom: 1px solid #2B2B2B;
+}
+
+.wrapper {
+	max-width: 1024px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin: 0 auto;
+}
+
+nav ul {list-style-type: none; display:flex; margin: 0; padding: 0;}
+nav a {display: block; padding: 10px 20px; color: #D61600; font-weight: bold;}
+
+.logo {font-size: 25px; max-width: 150px}
+.logo > img {
+	width: 100%;
+}
+.logo i {padding: 15px 13px; color: white; border-radius: 50%; margin-right: 15px; background-color: #8834FD;}
+.logo div {font-weight: bold;}
