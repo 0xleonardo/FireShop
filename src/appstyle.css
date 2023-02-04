@@ -1,0 +1,8 @@
+.shopBody {
+    background-color: #f1f1f1;
+    min-height: 100vh;
+    background-image: url(./assets/images/background.svg);
+    background-repeat: repeat;
+    background-position: center;
+    background-size: cover;
+}

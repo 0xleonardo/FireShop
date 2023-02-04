@@ -4,6 +4,8 @@ import {BrowserRouter} from "react-router-dom";
 import {useEffect} from "react";
 import {useStore} from "./stores/utils/store-provider";
 
+import "./appstyle.css";
+
 export const App = () => {
 	const { commonStore, userStore } = useStore();
 
@@ -17,7 +19,9 @@ export const App = () => {
 	return (
 		<BrowserRouter>
 			<NavBar />
-			<RoutesComponent/>
+			<div className="shopBody">
+				<RoutesComponent />
+			</div>
 		</BrowserRouter>
 	);
 }

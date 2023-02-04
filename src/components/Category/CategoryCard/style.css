@@ -1,0 +1,14 @@
+.category_card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 250px;
+    border: 1px solid black;
+}
+
+.card_icon {
+    width: 100px;
+    height: 100px;
+}
