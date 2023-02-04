@@ -63,6 +63,15 @@ const Auth = {
 const Category = {
   get: () =>
       requests.get('/categories'),
+  isValid: (name:string) =>
+      requests.post('/categories/isValid', {name:name}),
+};
+
+const Item = {
+  getForCategory: (idCategory:number) =>
+      requests.post('/category/items', {idCategory:idCategory}),
+  getItem: (idItem:string) =>
+      requests.get(`/item/${idItem}`),
 };
 
 
@@ -72,7 +81,8 @@ const omitSlug = (article: any) => Object.assign({}, article, { slug: undefined 
 
 const agent = {
   Auth,
-  Category
+  Category,
+  Item
 };
 
 export default agent;
