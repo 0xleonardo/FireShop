@@ -1,7 +1,9 @@
 * {margin:0; padding:0; text-decoration: none;}
 
 .navistyle {
-	border-bottom: 1px solid #2B2B2B;
+	background: #e0e0e0;
+	box-shadow:  20px 20px 60px #bebebe,
+	-20px -20px 60px #ffffff;
 }
 
 .wrapper {
@@ -12,8 +14,12 @@
 	margin: 0 auto;
 }
 
+.navi {
+	display: flex;
+}
+
 nav ul {list-style-type: none; display:flex; margin: 0; padding: 0;}
-nav a {display: block; padding: 10px 20px; color: #D61600; font-weight: bold;}
+nav a {display: block; color: #D61600; font-weight: bold;}
 
 .logo {font-size: 25px; max-width: 150px}
 .logo > img {
@@ -21,3 +27,11 @@ nav a {display: block; padding: 10px 20px; color: #D61600; font-weight: bold;}
 }
 .logo i {padding: 15px 13px; color: white; border-radius: 50%; margin-right: 15px; background-color: #8834FD;}
 .logo div {font-weight: bold;}
+
+.nav_item_counter{
+	position: absolute;
+	top: 0.8rem;
+	left: 1rem;
+	font-size: 0.55rem;
+	color: #c50000;
+}

@@ -2,13 +2,14 @@ import {Category} from "../../../models/category.modal";
 
 import "./style.css"
 import {useNavigate} from "react-router-dom";
+import {observer} from "mobx-react";
 
 interface CategoryCardProps {
     category:Category
 }
 
 
-export const CategoryCard = (props:CategoryCardProps) => {
+export const CategoryCard = observer((props:CategoryCardProps) => {
 
     const icon = require(`../../../assets/category/${props.category.imageName}`);
 
@@ -21,4 +22,4 @@ export const CategoryCard = (props:CategoryCardProps) => {
         </button>
     )
 
-}
+})

@@ -1,0 +1,54 @@
+.delivery_page {
+    margin: 0 auto;
+    max-width: 1170px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.delivery_page_heading > div {
+    text-transform: uppercase;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.delivery_page_overview {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    background: #f6f5f7;
+    padding: 15px 10px;
+    border: 1px solid #bebebe;
+}
+
+.delivery_page_overview_payment {
+    display: flex;
+    align-items:center;
+    gap: 10px;
+}
+
+.delivery_page_overview_payment img {
+    max-width: 70px
+}
+
+.delivery_page_overview > div {
+    max-width: 50%;
+    width: 100%;
+}
+
+.delivery_page_overview > pre {
+    display: flex;
+    flex-direction: column;
+}
+
+.delivery_page_overview > pre > div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.delivery_page_overview > pre > div > .delivery_page_overview_radio {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}

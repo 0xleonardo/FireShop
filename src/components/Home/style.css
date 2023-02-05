@@ -1,0 +1,14 @@
+.homeWrapper {
+    margin: 0 auto;
+    max-width: 1170px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.homeCategoryButtons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}

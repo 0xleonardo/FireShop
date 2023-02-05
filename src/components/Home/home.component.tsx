@@ -2,8 +2,14 @@ import {useEffect, useState} from "react";
 import {Category} from "../../models/category.modal";
 import {getCategories} from "../../stores/categories.store";
 import {CategoryCard} from "../Category/CategoryCard/category-card.component";
+import ImageSlider from "../../components-styled/ImageSlider/image-slider.component";
+import "./style.css";
+import {observer} from "mobx-react";
+import {importAll} from "../../utils/simple.utils";
 
-export const HomeComponent = () => {
+const images = importAll(require.context('../../assets/slider/'));
+
+export const HomeComponent = observer(() => {
 
     const [categories, setCategories] = useState<Category[]>([]);
 
@@ -14,16 +20,21 @@ export const HomeComponent = () => {
         })
     }, []);
 
+    const sliders = images.map((image:any) => {return {url: image}});
+
     return (
-        <div style={{color:"black"}}>
-            {categories.map((category:Category) =>
-                (
-                    <CategoryCard
-                        key={category.id}
-                        category={category}/>
-                )
-            )}
+        <div className="homeWrapper">
+            <ImageSlider slides={sliders}/>
+            <div className="homeCategoryButtons">
+                {categories.map((category:Category) =>
+                    (
+                        <CategoryCard
+                            key={category.id}
+                            category={category}/>
+                    )
+                )}
+            </div>
         </div>
     )
 
-}
+})

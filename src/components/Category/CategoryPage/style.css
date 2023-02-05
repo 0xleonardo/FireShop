@@ -1,0 +1,25 @@
+.category_page {
+    margin: 0 auto;
+    max-width: 1170px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.category_page_heading {
+    padding: 25px 0;
+}
+
+.category_page_heading > div {
+    text-transform: uppercase;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.category_page_items {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}

@@ -1,5 +1,5 @@
 {
-  "name": "tvz_bank",
+  "name": "fireshop",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -12,8 +12,12 @@
     "@types/styled-components": "^5.1.26",
     "@types/superagent": "^4.1.16",
     "axios": "^1.2.2",
+    "lodash": "^4.17.21",
     "mobx-react": "^7.6.0",
     "nodemon": "^2.0.20",
+    "primeflex": "^3.3.0",
+    "primeicons": "^6.0.1",
+    "primereact": "^9.0.0-beta.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.7.1",
@@ -54,6 +58,7 @@
     "@types/node": "^18.11.18",
     "@types/react": "^18.0.26",
     "@types/react-dom": "^18.0.10",
+    "@types/webpack-env": "^1.18.0",
     "typescript": "^4.9.4"
   }
 }

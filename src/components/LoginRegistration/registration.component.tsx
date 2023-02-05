@@ -1,5 +1,5 @@
 import {observer} from "mobx-react";
-import "./style.css";
+import "./registration.style.css";
 import {useState} from "react";
 import {FormInput} from "./form-input/form-input.component";
 import {ResponseError} from "superagent";

@@ -18,7 +18,7 @@ export const FormInput = (props: any) => {
                 onFocus={() => inputProps.name === "confirmPassword" && setFocused(true)}
                 focused={focused.toString()}
             />
-            <span>{errorMessage}</span>
+            <span className="formInput_span">{errorMessage}</span>
         </div>
     );
 };

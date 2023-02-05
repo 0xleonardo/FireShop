@@ -2,6 +2,7 @@ import {action, computed, makeObservable, observable, runInAction} from "mobx";
 import {ResponseError} from "superagent";
 import commonStore from "../common.store";
 import userStore from "../user.store";
+import cartStore from "../cart.store";
 import agent from "../agent";
 
 export class AuthStore {
@@ -43,6 +44,7 @@ export class AuthStore {
   logout() {
     commonStore.setToken(null);
     userStore.forgetUser();
+    cartStore.emptyCart();
     return Promise.resolve();
   }
 

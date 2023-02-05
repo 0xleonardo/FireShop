@@ -5,9 +5,15 @@ import {useEffect, useState} from "react";
 import {Loading} from "../../../routes/routes";
 import {Category} from "../../../models/category.modal";
 import {Item} from "../../../models/item.modal";
-import {ItemCard} from "../../Item/ItemCard/item-card.component";
 
-export const CategoryPage = () => {
+import 'primereact/resources/themes/lara-light-indigo/theme.css'; // theme
+import 'primereact/resources/primereact.css'; // core css
+import 'primeicons/primeicons.css'; // icons
+import 'primeflex/primeflex.css';
+import {ItemCard} from "../../Item/ItemCard/item-card.component";
+import {observer} from "mobx-react";
+
+export const CategoryPage = observer(() => {
 
     const {categoryName} = useParams();
 
@@ -30,16 +36,18 @@ export const CategoryPage = () => {
 
     if (isValidUrl) {
         return (
-            <div>
-                {categoryName}
-                <ul>
+            <div className="category_page">
+                <div className="category_page_heading">
+                    <div>{categoryName}</div>
+                </div>
+                <div className="category_page_items">
                     {items.map((item:Item) => {
-                        return (<li><ItemCard item={item}/></li>)
+                        return (<ItemCard key={item.id} item={item}/>)
                     })}
-                </ul>
+                </div>
             </div>
         )
     }
 
     return <Loading/>
-}
+})

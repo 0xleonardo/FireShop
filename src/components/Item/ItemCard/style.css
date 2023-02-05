@@ -3,11 +3,46 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
-    border: 1px solid black;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #cbcbcb;
+    gap: 10px;
+    background-color: white;
+    max-width: 250px;
 }
 
 .item_card > img {
-    max-width: 100px;
-    max-height: 100px;
+    width: 100px;
+    height: 100px;
+}
+
+.item_card_info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.item_card_brand {
+    margin: 0;
+    font-size: 20px;
+}
+
+.item_card_series {
+    font-size: 12px;
+}
+
+.item_card_desc {
+    font-size: 10px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.item_card_price_discounted {
+    display:flex;
+    gap:10px;
+}
+
+.item_card_price_discounted > .item_card_price_real {
+    color: red;
+    text-decoration: line-through;
 }

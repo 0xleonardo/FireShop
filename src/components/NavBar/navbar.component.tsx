@@ -2,7 +2,6 @@ import {observer} from "mobx-react";
 import {useStore} from "../../stores/utils/store-provider";
 
 import "./style.css";
-import {AccountBox, AdminPanelSettings, Logout, ShoppingCart} from '@mui/icons-material';
 import {NavBarElement} from "./navbar-element-component/navbar-element.component";
 import {useNavigate} from "react-router-dom";
 
@@ -28,15 +27,10 @@ export const NavBar = observer(() => {
 				</div>
 
 				<div className="navi">
-					<ul>
-						<NavBarElement route={isUserLogged ? "/profile" : "/login"} icon={AccountBox} onHoverTitle={isUserLogged ? userStore.getUser!.name : "Login"}/>
-
-						<NavBarElement route="/cart" icon={ShoppingCart} onHoverTitle="My Cart"/>
-
-						{isUserAdmin && <NavBarElement route="/cms" icon={AdminPanelSettings} onHoverTitle="Admin Panel"/>}
-
-						{isUserLogged && <NavBarElement route="/" icon={Logout} onHoverTitle="Logout" onClick={logout}/>}
-					</ul>
+					<NavBarElement route={isUserLogged ? "/profile" : "/login"} icon="pi pi-user" color="black" onHoverTitle={isUserLogged ? userStore.getUser!.name : "Login"}/>
+					<NavBarElement route="/cart" icon="pi pi-shopping-cart" color="black" onHoverTitle="My Cart"/>
+					{isUserAdmin && <NavBarElement route="/cms" icon="pi pi-database" color="black" onHoverTitle="Admin Panel"/>}
+					{isUserLogged && <NavBarElement route="/" icon="pi pi-sign-out" color="black" onHoverTitle="Logout" onClick={logout}/>}
 				</div>
 			</nav>
 		</div>
