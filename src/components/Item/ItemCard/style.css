@@ -1,25 +1,38 @@
 .item_card {
+    gap: 10px;
+    background-color: white;
+    max-width: 250px;
+    border-radius: 10px;
+    border: 1px solid #cbcbcb;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 15px;
-    border-radius: 10px;
-    border: 1px solid #cbcbcb;
-    gap: 10px;
-    background-color: white;
-    max-width: 250px;
+}
+
+.item_card_trigger {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+    height:100%;
     transition: transform .5s;
     cursor:pointer;
 }
 
-.item_card:hover {
+.item_card_trigger > button {
+    z-index:100;
+}
+
+.item_card_trigger:hover {
     cursor: pointer;
     transform: scale(1.05);
 }
 
 
-.item_card > img {
+.item_card_trigger > img {
     width: 100px;
     height: 100px;
 }
