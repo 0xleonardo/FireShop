@@ -163,7 +163,7 @@ export const LoginRegistrationComponent = observer(() => {
                     </form>
                 </div>
                 <div className="form-container sign-in-container" hidden={panelState !== ""}>
-                    <form action="#" onSubmit={handleLoginSubmit}>
+                    <form action="#" onSubmit={handleLoginSubmit} className="register_form">
                         <h1>Sign in</h1>
                         {inputsLogin.map((input) => (
                             <FormInput
