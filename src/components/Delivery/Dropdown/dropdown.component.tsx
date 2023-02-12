@@ -1,17 +1,17 @@
 import {useEffect, useState} from "react";
 import "./style.css";
-import {getCountries} from "../../../stores/categories.store";
+import {getCountries} from "../../../utils/api.utils";
 
 const _ = require('lodash');
 
 export const CountryDropDown = (props: any) => {
     const [countriesCount, setCountriesCount] = useState(0);
     const [countries, setCountries] = useState([]);
-    const { label, errorMessage, onChange, id, ...inputProps } = props;
+    const {label, errorMessage, onChange, id, ...inputProps} = props;
 
-    useEffect(() =>{
-        getCountries().then((res:any) => {
-            const countriesFromApi = res.map((country:any) => _.get(country, "name.common"));
+    useEffect(() => {
+        getCountries().then((res: any) => {
+            const countriesFromApi = res.map((country: any) => _.get(country, "name.common"));
             setCountriesCount(countriesFromApi.length);
             setCountries(countriesFromApi);
         })
@@ -22,7 +22,8 @@ export const CountryDropDown = (props: any) => {
 
             <select onChange={onChange} {...inputProps}>
                 <option key={0} value="Not selected" disabled={true}>Select country</option>
-                {countries.map((country:string, idx:number) => <option key={idx+1} value={country}>{country}</option>)}
+                {countries.map((country: string, idx: number) => <option key={idx + 1}
+                                                                         value={country}>{country}</option>)}
             </select>
             <span>{errorMessage}</span>
         </div>

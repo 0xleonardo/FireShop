@@ -1,7 +1,7 @@
 .cart_summary {
     display: flex;
     flex-direction: column;
-    gap:10px
+    gap: 10px
 }
 
 .cart_summary > h3 {
@@ -13,12 +13,12 @@
     padding: 15px 10px;
     border: 1px solid #bebebe;
     display: flex;
-    align-items:center;
+    align-items: center;
     justify-content: space-between;
 }
 
 .cart_summary_buttons {
-    width:100%;
+    width: 100%;
     display: flex;
     justify-content: flex-end;
 }

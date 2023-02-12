@@ -1,5 +1,5 @@
-import {action, makeObservable, observable, runInAction, computed} from 'mobx';
-import {User} from '../models/user.modal'
+import {action, computed, makeObservable, observable, runInAction} from 'mobx';
+import {User} from '../modals/user.modal'
 import agent from "./agent";
 
 export class UserStore {
@@ -10,34 +10,30 @@ export class UserStore {
     @observable
     loadingUser?: boolean;
 
-    @observable
-    updatingUser?: boolean;
-
-    @observable
-    updatingUserErrors: any;
-
     constructor() {
         makeObservable(this);
+    }
+
+    @computed
+    get getUser() {
+        return this.currentUser;
     }
 
     @action
     pullUser() {
         this.loadingUser = true;
         return agent.Auth.current()
-            .then(( res: any) => runInAction( ()=> {
-                    this.currentUser = res.user;
-                }))
-            .finally(action(() => { this.loadingUser = false; }))
+            .then((res: any) => runInAction(() => {
+                this.currentUser = res.user;
+            }))
+            .finally(action(() => {
+                this.loadingUser = false;
+            }))
     }
 
     @action
     forgetUser() {
         this.currentUser = undefined;
-    }
-
-    @computed
-    get getUser() {
-        return this.currentUser;
     }
 }
 

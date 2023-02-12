@@ -18,19 +18,24 @@ export const CartPage = observer(() => {
 
     const isCartEmpty = _.isEmpty(cartStore.getCartItems);
 
+    const emptyCart = () => {
+        cartStore.emptyCart();
+    }
+
     return (
         <div className="cart_page">
             <div className="cart_page_heading">
                 <div>CART</div>
-                <Button style={{fontSize:"12px"}} className="p-button-secondary" onClick={()=>cartStore.emptyCart()}>CLEAR</Button>
+                <Button style={{fontSize: "12px"}} className="p-button-secondary"
+                        onClick={() => emptyCart()}>CLEAR</Button>
             </div>
             <div className="cart_page_overview">
                 <div className="cart_page_overview_items">
                     {isCartEmpty ? <h3>Cart empty</h3> : <h3>Items in cart ({cartStore.getCartItemsNumber})</h3>}
-                    <hr style={{marginBottom:10}} hidden={isCartEmpty}/>
+                    <hr style={{marginBottom: 10}} hidden={isCartEmpty}/>
                     <ul>
                         {
-                            cartStore.getCartItems.map((cartItem:CartItem) => {
+                            cartStore.getCartItems.map((cartItem: CartItem) => {
                                 return (
                                     <CartItemListElement key={cartItem.item.id} cartItem={cartItem}/>
                                 )
@@ -39,8 +44,8 @@ export const CartPage = observer(() => {
                     </ul>
                 </div>
                 <hr hidden={isCartEmpty}/>
-                <div className="cart_page_overview_summary" hidden={cartStore.getCartItems.length===0}>
-                    <CartSummary />
+                <div className="cart_page_overview_summary" hidden={cartStore.getCartItems.length === 0}>
+                    <CartSummary/>
                 </div>
             </div>
         </div>

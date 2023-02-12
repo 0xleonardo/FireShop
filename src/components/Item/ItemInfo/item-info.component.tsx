@@ -1,8 +1,8 @@
 import "./style.css"
 import {useNavigate, useParams} from "react-router-dom";
-import {Item} from "../../../models/item.modal";
+import {Item} from "../../../modals/item.modal";
 import {useEffect, useState} from "react";
-import {getItem} from "../../../stores/categories.store";
+import {getItem} from "../../../utils/api.utils";
 import {Loading} from "../../../routes/routes";
 import ImageSlider from "../../../components-styled/ImageSlider/image-slider.component";
 import {Button} from "primereact/button";
@@ -23,7 +23,7 @@ export const ItemInfo = observer(() => {
 
     useEffect(() => {
         getItem(itemId!)
-            .then((res: {status:string, item?:Item}) => {
+            .then((res: { status: string, item?: Item }) => {
                 if (res.status === "200") {
                     setIsValidUrl(true);
                     setItem(res.item!)
@@ -35,7 +35,8 @@ export const ItemInfo = observer(() => {
         return (
             <div className="item_info">
                 <div className="item_info_summary">
-                    <Button className="p-button-secondary" onClick={() => navigate(-1)}><i className="pi pi-backward" style={{ fontSize: '1.8rem' }}/></Button>
+                    <Button className="p-button-secondary" onClick={() => navigate(-1)}><i className="pi pi-backward"
+                                                                                           style={{fontSize: '1.8rem'}}/></Button>
                     <div>
                         <div className="item_info_summary_brand">{item.brand} </div>
                         <div className="item_info_summary_series">{item.series}</div>
@@ -49,16 +50,23 @@ export const ItemInfo = observer(() => {
                     {item.detailedDescription}
                 </div>
                 <div>
-                    <span style={{display:"flex", gap:5}}>Currently {item.amount===0 ? <div style={{textTransform:"uppercase", color:"red"}}>unavailable</div> : <div style={{textTransform:"uppercase", color:"green"}}>available</div>}</span>
+                    <span style={{display: "flex", gap: 5}}>Currently {item.amount === 0 ?
+                        <div style={{textTransform: "uppercase", color: "red"}}>unavailable</div> :
+                        <div style={{textTransform: "uppercase", color: "green"}}>available</div>}</span>
                 </div>
                 <div>
-                    <Button disabled={item.amount===0} className="p-button-danger" onClick={()=>cartStore.addItem(item)}>ADD TO CART</Button>
-                    <Button className="p-button-info" onClick={() => navigate('/contact')}>INQUIRY</Button>
+                    <Button disabled={item.amount === 0} className="p-button-danger"
+                            onClick={() => cartStore.addItem(item)}>ADD TO CART</Button>
+                    <a href={`mailto:contact@fireshop.hr?subject=Inquiry&body=${item.series}`}>
+                        <Button className="p-button-info">
+                            INQUIRY
+                        </Button>
+                    </a>
                 </div>
             </div>
         )
     }
 
-    return <Loading />
+    return <Loading/>
 
 })

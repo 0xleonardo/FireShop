@@ -5,23 +5,26 @@ import {useEffect} from "react";
 import {useStore} from "./stores/utils/store-provider";
 
 import "./appstyle.css";
+import {observer} from "mobx-react";
+import {Footer} from "./components/Footer/customfooter.component";
 
-export const App = () => {
-	const { commonStore, userStore } = useStore();
+export const App = observer(() => {
+    const {commonStore, userStore} = useStore();
 
-	useEffect(() => {
-		if (commonStore.token) {
-			userStore.pullUser()
-				.finally(() => commonStore.setAppLoaded())
-		}
-	})
+    useEffect(() => {
+        if (commonStore.token) {
+            userStore.pullUser()
+                .finally(() => commonStore.setAppLoaded())
+        }
+    })
 
-	return (
-		<BrowserRouter>
-			<NavBar />
-			<div className="shopBody">
-				<RoutesComponent />
-			</div>
-		</BrowserRouter>
-	);
-}
+    return (
+        <BrowserRouter>
+            <div className="shopBody">
+                <NavBar/>
+                <RoutesComponent/>
+                <Footer/>
+            </div>
+        </BrowserRouter>
+    );
+})

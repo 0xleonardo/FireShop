@@ -5,9 +5,9 @@ import cartStore, {CartStore} from "./cart.store";
 import deliveryStore, {DeliveryStore} from "./delivery.store";
 
 export type RootStore = {
-    authStore: AuthStore;
-    commonStore: CommonStore;
     userStore: UserStore;
+    commonStore: CommonStore;
+    authStore: AuthStore;
     cartStore: CartStore;
     deliveryStore: DeliveryStore;
 }

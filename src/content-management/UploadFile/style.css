@@ -1,0 +1,26 @@
+.file_upload {
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    max-width:280px;
+}
+
+.file_upload_input {
+    position:relative;
+}
+
+.file_upload_input > .file_upload_input_buttons {
+    position:absolute;
+    right:5px;
+    bottom:20px;
+}
+
+.file_upload_input_buttons > button {
+    padding:6px 8px;
+    margin:0;
+}
+
+.file_upload > button:hover {
+    cursor: cell;
+}

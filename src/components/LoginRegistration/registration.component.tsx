@@ -15,8 +15,7 @@ export const LoginRegistrationComponent = observer(() => {
     const changePanelState = () => {
         if (panelState === "") {
             setPanelState("right-panel-active");
-        }
-        else {
+        } else {
             setPanelState("");
         }
     }
@@ -45,6 +44,7 @@ export const LoginRegistrationComponent = observer(() => {
             placeholder: "Email",
             errorMessage: "Please enter valid email",
             label: "Email",
+            required:true
         },
         {
             id: 7,
@@ -53,6 +53,7 @@ export const LoginRegistrationComponent = observer(() => {
             placeholder: "Password",
             errorMessage: "Please enter password",
             label: "Password",
+            required:true
         }
     ];
 
@@ -96,7 +97,7 @@ export const LoginRegistrationComponent = observer(() => {
             errorMessage:
                 "Password should be 8-20 characters and include at least 1 letter, 1 number and 1 special character!",
             label: "Password",
-            pattern: `^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$`,
+            pattern: `^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&]{8,20}$`,
             required: true,
         },
         {
@@ -106,7 +107,7 @@ export const LoginRegistrationComponent = observer(() => {
             placeholder: "Confirm Password",
             errorMessage: "Passwords don't match!",
             label: "Confirm Password",
-            pattern: registrationCredentials.password,
+            pattern: `^${registrationCredentials.password}$`,
             required: true,
         },
     ];
@@ -114,13 +115,14 @@ export const LoginRegistrationComponent = observer(() => {
     const handleRegistrationSubmit = (e: any) => {
         e.preventDefault();
         authStore.register(registrationCredentials.name, registrationCredentials.surname, registrationCredentials.email, registrationCredentials.password)
-            .then((res: any)=> {
+            .then((res: any) => {
                 setPanelState("");
                 setRegisterSuccess(res.success);
                 setError("");
             })
-            .catch((err:any) => {
+            .catch((err: any) => {
                 setPanelState("");
+                setRegisterSuccess("");
                 setError(err.response!.body.error);
             });
     };
@@ -128,27 +130,27 @@ export const LoginRegistrationComponent = observer(() => {
     const handleLoginSubmit = (e: any) => {
         e.preventDefault();
         authStore.login(loginCredentials.email, loginCredentials.password)
-            .then(()=> {
+            .then(() => {
                 navigate("/");
             })
-            .catch((err:ResponseError) => {
+            .catch((err: ResponseError) => {
                 setError(err.response!.body.error)
             });
     };
 
     const onLoginChange = (e: any) => {
-        setLoginCredentials({ ...loginCredentials, [e.target.name]: e.target.value });
+        setLoginCredentials({...loginCredentials, [e.target.name]: e.target.value});
     };
 
     const onRegistrationChange = (e: any) => {
-        setRegistrationCredentials({ ...registrationCredentials, [e.target.name]: e.target.value });
+        setRegistrationCredentials({...registrationCredentials, [e.target.name]: e.target.value});
     };
 
     return (
         <div className="regloginform">
             <div className={`container ${panelState}`} id="container">
-                <div className="form-container sign-up-container" hidden={panelState===""}>
-                    <form action="#">
+                <div className="form-container sign-up-container" hidden={panelState === ""}>
+                    <form action="#" onSubmit={handleRegistrationSubmit} className="register_form">
                         <h1>Create Account</h1>
                         {inputsRegistration.map((input) => (
                             <FormInput
@@ -157,11 +159,11 @@ export const LoginRegistrationComponent = observer(() => {
                                 onChange={onRegistrationChange}
                             />
                         ))}
-                        <button onClick={handleRegistrationSubmit}>Sign Up</button>
+                        <button type="submit" className="form-btn">Sign Up</button>
                     </form>
                 </div>
-                <div className="form-container sign-in-container" hidden={panelState!==""}>
-                    <form action="#">
+                <div className="form-container sign-in-container" hidden={panelState !== ""}>
+                    <form action="#" onSubmit={handleLoginSubmit}>
                         <h1>Sign in</h1>
                         {inputsLogin.map((input) => (
                             <FormInput
@@ -172,21 +174,21 @@ export const LoginRegistrationComponent = observer(() => {
                         ))}
                         {!!error && <div className="loginError">{error}</div>}
                         {!!registerSuccess && <div className="registerSuccess">{registerSuccess}</div>}
-                        <button onClick={handleLoginSubmit}>Sign In</button>
+                        <button type="submit" className="form-btn">Sign In</button>
                         <a href="#">Forgot your password?</a>
                     </form>
                 </div>
                 <div className="overlay-container">
                     <div className="overlay">
                         <div className="overlay-panel overlay-left">
-                            <h1>Welcome Back!</h1>
-                            <p>To keep connected with us please login with your personal info</p>
-                            <button className="ghost" id="signIn" onClick={changePanelState}>Sign In</button>
+                            <h1>Already registered?</h1>
+                            <p>To view your orders please login with your personal info</p>
+                            <button className="ghost form-btn" id="signIn" onClick={changePanelState}>Sign In</button>
                         </div>
                         <div className="overlay-panel overlay-right">
-                            <h1>Hello, Friend!</h1>
-                            <p>Enter your personal details and start journey with us</p>
-                            <button className="ghost" id="signUp" onClick={changePanelState}>Sign Up</button>
+                            <h1>Still not registered?</h1>
+                            <p>If you want to keep track of your orders please register</p>
+                            <button className="ghost form-btn" id="signUp" onClick={changePanelState}>Sign Up</button>
                         </div>
                     </div>
                 </div>

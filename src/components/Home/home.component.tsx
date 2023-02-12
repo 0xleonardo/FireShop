@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
-import {Category} from "../../models/category.modal";
-import {getCategories} from "../../stores/categories.store";
+import {Category} from "../../modals/category.modal";
+import {getCategories} from "../../utils/api.utils";
 import {CategoryCard} from "../Category/CategoryCard/category-card.component";
 import ImageSlider from "../../components-styled/ImageSlider/image-slider.component";
 import "./style.css";
@@ -16,17 +16,19 @@ export const HomeComponent = observer(() => {
     useEffect(() => {
         getCategories()
             .then((res: Category[]) => {
-            setCategories(res);
-        })
+                setCategories(res);
+            })
     }, []);
 
-    const sliders = images.map((image:any) => {return {url: image}});
+    const sliders = images.map((image: any) => {
+        return {url: image}
+    });
 
     return (
         <div className="homeWrapper">
             <ImageSlider slides={sliders}/>
             <div className="homeCategoryButtons">
-                {categories.map((category:Category) =>
+                {categories.map((category: Category) =>
                     (
                         <CategoryCard
                             key={category.id}

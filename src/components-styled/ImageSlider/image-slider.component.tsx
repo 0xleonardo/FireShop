@@ -1,4 +1,4 @@
-import {CSSProperties, useState } from "react";
+import {CSSProperties, useState} from "react";
 
 const slideStyles = {
     width: "100%",
@@ -6,7 +6,7 @@ const slideStyles = {
     borderRadius: "10px",
     backgroundSize: "contain",
     backgroundPosition: "center",
-    backgroundColor:"white",
+    backgroundColor: "white",
     backgroundRepeat: "no-repeat"
 } as CSSProperties;
 
@@ -58,12 +58,12 @@ const activeDotStyle = {
 } as CSSProperties;
 
 export interface Slide {
-    url:string;
+    url: string;
 }
 
 interface ImageSliderProps {
-    slides:Slide[]
-    arrowsColor?:string;
+    slides: Slide[]
+    arrowsColor?: string;
 }
 
 const containerStyles = {
@@ -72,7 +72,7 @@ const containerStyles = {
     margin: "0 auto",
 } as CSSProperties;
 
-const ImageSlider = ( props:ImageSliderProps ) => {
+const ImageSlider = (props: ImageSliderProps) => {
 
     const {slides} = props;
 
@@ -87,7 +87,7 @@ const ImageSlider = ( props:ImageSliderProps ) => {
         const newIndex = isLastSlide ? 0 : currentIndex + 1;
         setCurrentIndex(newIndex);
     };
-    const goToSlide = (slideIndex:number) => {
+    const goToSlide = (slideIndex: number) => {
         setCurrentIndex(slideIndex);
     };
     const slideStylesWidthBackground = {
@@ -101,10 +101,12 @@ const ImageSlider = ( props:ImageSliderProps ) => {
         <div style={containerStyles}>
             <div style={sliderStyles}>
                 <div>
-                    <div onClick={goToPrevious} style={{...leftArrowStyles, color:props.arrowsColor}} hidden={isOneImageOnly}>
+                    <div onClick={goToPrevious} style={{...leftArrowStyles, color: props.arrowsColor}}
+                         hidden={isOneImageOnly}>
                         ❰
                     </div>
-                    <div onClick={goToNext} style={{...rightArrowStyles, color:props.arrowsColor}} hidden={isOneImageOnly}>
+                    <div onClick={goToNext} style={{...rightArrowStyles, color: props.arrowsColor}}
+                         hidden={isOneImageOnly}>
                         ❱
                     </div>
                 </div>
@@ -112,7 +114,7 @@ const ImageSlider = ( props:ImageSliderProps ) => {
                 <div style={dotsContainerStyles}>
                     {slides.map((slide, slideIndex) => (
                         <div
-                            style={currentIndex === slideIndex  ? activeDotStyle : dotStyle}
+                            style={currentIndex === slideIndex ? activeDotStyle : dotStyle}
                             key={slideIndex}
                             onClick={() => goToSlide(slideIndex)}
                         >

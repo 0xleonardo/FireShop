@@ -7,10 +7,10 @@ import {useStore} from "../../../stores/utils/store-provider";
 import ".././style.css";
 
 interface NavBarElementProps {
-    route:string,
+    route: string,
     icon: string,
     onHoverTitle: string;
-    color:string;
+    color: string;
     onClick?: () => void;
 }
 
@@ -22,9 +22,9 @@ export const NavBarElement = observer((props: NavBarElementProps) => {
         <Link to={props.route}>
             <Tooltip title={props.onHoverTitle} onClick={props.onClick}>
                 <IconButton>
-                    <i className={props.icon} style={{ fontSize: '1.5rem', color:props.color }}></i>
+                    <i className={props.icon} style={{fontSize: '1.5rem', color: props.color}}></i>
                     {props.onHoverTitle === "My Cart"
-                    && <div className="nav_item_counter">{cartStore.getCartItemsNumber}</div>}
+                        && <div className="nav_item_counter">{cartStore.getCartItemsNumber}</div>}
                 </IconButton>
             </Tooltip>
         </Link>

@@ -4,6 +4,7 @@
     display: flex;
     flex-direction: column;
     gap: 25px;
+    width: 100%;
 }
 
 .delivery_page_heading > div {
@@ -23,7 +24,13 @@
 
 .delivery_page_overview_payment {
     display: flex;
-    align-items:center;
+    align-items: center;
+    gap: 10px;
+}
+
+.delivery_page_overview_buttons {
+    display: flex;
+    justify-content: flex-end;
     gap: 10px;
 }
 

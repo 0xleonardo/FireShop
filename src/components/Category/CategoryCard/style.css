@@ -3,12 +3,19 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 200px;
+    max-width: 200px;
     height: 250px;
     border: 1px solid black;
+    width: 100%;
+    transition: transform .5s;
+    cursor:pointer;
 }
 
-.card_icon {
-    width: 100px;
-    height: 100px;
+.category_card:hover {
+    transform: scale(1.05);
+}
+
+.category_card > * {
+    height: auto;
+    width: 100%;
 }

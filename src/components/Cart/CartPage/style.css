@@ -7,7 +7,7 @@
 
 .cart_page_overview {
     display: flex;
-    flex-direction:column;
+    flex-direction: column;
     justify-content: space-between;
     gap: 10px;
 }
@@ -18,11 +18,11 @@
 }
 
 .cart_page_overview_items {
-    width:100%;
+    width: 100%;
 }
 
 .cart_page_overview_summary {
-    width:100%;
+    width: 100%;
 }
 
 .cart_page_overview_items > ul {

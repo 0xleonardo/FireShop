@@ -16,9 +16,10 @@ export const CartSummary = observer(() => {
             <h3>Summary</h3>
             <div className="cart_summary_box">
                 <div>When moving to the next step, we check the availability of the product in the basket.</div>
-                <div>Sum: {_.round(cartStore.getCartItemsPriceSum,2)} {moneyCurrency}</div>
+                <div>Sum: {_.round(cartStore.getCartTotal, 2)} {moneyCurrency}</div>
             </div>
             <div className="cart_summary_buttons">
+                <Button onClick={() => navigate(-1)} className="p-button-secondary">GO BACK</Button>
                 <Button onClick={() => navigate('/delivery')}>DELIVERY</Button>
             </div>
         </div>

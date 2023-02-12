@@ -1,0 +1,16 @@
+.order_list_component {
+    width: 100%;
+    color: dimgray;
+    border-radius: 10px;
+    border: 1px solid lightgray;
+    transition: transform .5s;
+    cursor: pointer;
+}
+
+.order_list_component:hover {
+    transform: scale(1.05);
+}
+
+.order_list_component_modal {
+
+}

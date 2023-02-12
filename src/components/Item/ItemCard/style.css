@@ -9,7 +9,15 @@
     gap: 10px;
     background-color: white;
     max-width: 250px;
+    transition: transform .5s;
+    cursor:pointer;
 }
+
+.item_card:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
 
 .item_card > img {
     width: 100px;
@@ -38,8 +46,8 @@
 }
 
 .item_card_price_discounted {
-    display:flex;
-    gap:10px;
+    display: flex;
+    gap: 10px;
 }
 
 .item_card_price_discounted > .item_card_price_real {
