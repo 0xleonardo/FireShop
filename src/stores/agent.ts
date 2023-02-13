@@ -96,10 +96,6 @@ const Order = {
         requests.post('/order-items', {itemIds: ids}),
 };
 
-const limit = (count: any, p: any) => `limit=${count}&offset=${p ? p * count : 0}`;
-const omitSlug = (article: any) => Object.assign({}, article, {slug: undefined})
-
-
 const agent = {
     Auth,
     Category,
