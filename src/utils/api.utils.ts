@@ -3,6 +3,7 @@ import {ResponseError} from "superagent";
 import countriesAgent from "../foreign-api/countries-api";
 import {NewOrder, OrderTransaction} from "../modals/order.modal";
 import {Item} from "../modals/item.modal";
+import {CartItemWithOnlyId} from "../components/UserProfile/OrderModal/order-modal.component";
 
 export const getCategories = () => {
     return agent.Category.get()
@@ -68,8 +69,8 @@ export const deleteItem = (id: number) => {
         });
 }
 
-export const itemBought = (id: number[]) => {
-    return agent.Item.itemBought(id)
+export const itemsBought = (ids: CartItemWithOnlyId[]) => {
+    return agent.Item.itemBought(ids)
         .catch((err: ResponseError) => {
             throw err;
         });

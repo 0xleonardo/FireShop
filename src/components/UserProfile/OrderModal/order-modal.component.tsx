@@ -12,7 +12,7 @@ interface OrderModalProps {
     order:OrderTransaction;
 }
 
-interface CartItemWithOnlyId {
+export interface CartItemWithOnlyId {
     id:number;
     amount:number;
 }

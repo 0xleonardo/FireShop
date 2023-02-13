@@ -4,10 +4,11 @@ import {observer} from "mobx-react";
 import {useStore} from "../../../stores/utils/store-provider";
 import {moneyCurrency} from "../../../utils/simple.utils";
 import {Button} from "primereact/button";
-import {itemBought, makeOrder} from "../../../utils/api.utils";
+import {itemsBought, makeOrder} from "../../../utils/api.utils";
 import {useState} from "react";
 import {Item} from "../../../modals/item.modal";
 import {CartItem} from "../../../stores/cart.store";
+import {CartItemWithOnlyId} from "../../UserProfile/OrderModal/order-modal.component";
 
 
 const _ = require('lodash');
@@ -19,27 +20,39 @@ export const ConfirmSummary = observer(() => {
     const navigate = useNavigate();
 
     const handleConfirm = () => {
-        makeOrder({
-            items: JSON.stringify(cartStore.getCartItems.map((cartItem) => {
-                return {id: cartItem.item.id, amount: cartItem.amount}
-            })),
-            total: cartStore.getCartTotal,
-            delivery: JSON.stringify(deliveryStore.getDeliveryInfo),
-            idUser: userStore.getUser?.id ? userStore.getUser?.id : undefined
-        }).then(() => {
-            setSuccessMsg("Order successful");
-            setTimeout(() => {
-                deliveryStore.clearDeliveryInfo();
-                itemBought(cartStore.getCartItems.map((cartItem:CartItem) => cartItem.item.id))
-                cartStore.emptyCart();
-                navigate("/")
-            }, 3000);
-        }).catch((err: any) => {
-            setErrorMsg("Error occurred, try again!")
-            setTimeout(() => {
-                navigate("/")
-            }, 3000);
-        })
+        itemsBought(cartStore.getCartItems.map((cartItem:CartItem) => {return {id: cartItem.item.id, amount: cartItem.amount} as CartItemWithOnlyId}))
+            .then((res:any)=> {
+                if(res.status == "200") {
+                    makeOrder({
+                        items: JSON.stringify(cartStore.getCartItems.map((cartItem) => {
+                            return {id: cartItem.item.id, amount: cartItem.amount}
+                        })),
+                        total: cartStore.getCartTotal,
+                        delivery: JSON.stringify(deliveryStore.getDeliveryInfo),
+                        idUser: userStore.getUser?.id ? userStore.getUser?.id : undefined
+                    }).then(() => {
+                        setSuccessMsg("Order successful");
+                        setTimeout(() => {
+                            deliveryStore.clearDeliveryInfo();
+                            cartStore.emptyCart();
+                            navigate("/")
+                        }, 3000);
+                    }).catch((err: any) => {
+                        setErrorMsg("Error occurred, try again!")
+                        setTimeout(() => {
+                            navigate("/")
+                        }, 3000);
+                    })
+                }
+
+                if (res.status == "404") {
+                    setErrorMsg(res.msg)
+                    setTimeout(() => {
+                        cartStore.emptyCart();
+                        navigate("/")
+                    }, 3000);
+                }
+            })
     }
 
     const canConfirmOrder = () => {

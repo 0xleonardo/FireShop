@@ -21,7 +21,7 @@ export const CategoryPagePagination = observer(() => {
     const {categoryName} = useParams();
 
     const [category, setCategory] = useState<Category>();
-    const [isValidUrl, setIsValidUrl] = useState(false);
+    const [isValidUrl, setIsValidUrl] = useState<boolean>();
     const [items, setItems] = useState<Item[]>([]);
     const [itemsToShow, setItemsToShow] = useState<Item[]>([]);
     const [loading, setLoading] = useState(false);
@@ -41,6 +41,9 @@ export const CategoryPagePagination = observer(() => {
                             setItemsToShow(res);
                             setLoading(false);
                         })
+                }
+                else {
+                    setIsValidUrl(false);
                 }
             })
     }, []);

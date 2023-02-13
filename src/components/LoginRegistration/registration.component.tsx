@@ -27,11 +27,28 @@ export const LoginRegistrationComponent = observer(() => {
         password: "",
         confirmPassword: "",
     });
+    
+    const resetRegisterForm = () => {
+        setRegistrationCredentials({
+            name: "",
+            surname: "",
+            email: "",
+            password: "",
+            confirmPassword: "",
+        });
+    }
 
     const [loginCredentials, setLoginCredentials] = useState({
         email: "",
         password: "",
     });
+
+    const resetLoginForm = () => {
+        setLoginCredentials({
+            email: "",
+            password: "",
+        });
+    }
 
     const [error, setError] = useState("");
     const [registerSuccess, setRegisterSuccess] = useState("");
@@ -44,6 +61,7 @@ export const LoginRegistrationComponent = observer(() => {
             placeholder: "Email",
             errorMessage: "Please enter valid email",
             label: "Email",
+            value:loginCredentials.email,
             required:true
         },
         {
@@ -53,6 +71,7 @@ export const LoginRegistrationComponent = observer(() => {
             placeholder: "Password",
             errorMessage: "Please enter password",
             label: "Password",
+            value:loginCredentials.password,
             required:true
         }
     ];
@@ -67,6 +86,7 @@ export const LoginRegistrationComponent = observer(() => {
                 "Name should be 2-32 characters and shouldn't include any special character!",
             label: "Name",
             pattern: "^[A-Za-z0-9]{2,32}$",
+            value:registrationCredentials.name,
             required: true,
         },
         {
@@ -78,6 +98,7 @@ export const LoginRegistrationComponent = observer(() => {
                 "Surname should be 2-64 characters and shouldn't include any special character!",
             label: "Surname",
             pattern: "^[A-Za-z0-9]{2,64}$",
+            value:registrationCredentials.surname,
             required: true,
         },
         {
@@ -87,6 +108,7 @@ export const LoginRegistrationComponent = observer(() => {
             placeholder: "Email",
             errorMessage: "It should be a valid email address!",
             label: "Email",
+            value:registrationCredentials.email,
             required: true,
         },
         {
@@ -98,6 +120,7 @@ export const LoginRegistrationComponent = observer(() => {
                 "Password should be 8-20 characters and include at least 1 letter, 1 number and 1 special character!",
             label: "Password",
             pattern: `^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&]{8,20}$`,
+            value:registrationCredentials.password,
             required: true,
         },
         {
@@ -108,6 +131,7 @@ export const LoginRegistrationComponent = observer(() => {
             errorMessage: "Passwords don't match!",
             label: "Confirm Password",
             pattern: `^${registrationCredentials.password}$`,
+            value:registrationCredentials.confirmPassword,
             required: true,
         },
     ];
@@ -119,11 +143,13 @@ export const LoginRegistrationComponent = observer(() => {
                 setPanelState("");
                 setRegisterSuccess(res.success);
                 setError("");
+                resetRegisterForm();
             })
             .catch((err: any) => {
                 setPanelState("");
                 setRegisterSuccess("");
                 setError(err.response!.body.error);
+                resetRegisterForm();
             });
     };
 
@@ -131,10 +157,13 @@ export const LoginRegistrationComponent = observer(() => {
         e.preventDefault();
         authStore.login(loginCredentials.email, loginCredentials.password)
             .then(() => {
+                resetLoginForm();
                 navigate("/");
             })
             .catch((err: ResponseError) => {
+                setRegisterSuccess("");
                 setError(err.response!.body.error)
+                resetLoginForm();
             });
     };
 

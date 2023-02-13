@@ -5,6 +5,7 @@ import {observer} from "mobx-react";
 import {moneyCurrency} from "../../../utils/simple.utils";
 import {Category} from "../../../modals/category.modal";
 import cartStore from "../../../stores/cart.store";
+import {Button} from "primereact/button";
 
 const _ = require('lodash');
 
@@ -41,7 +42,7 @@ export const ItemCard = observer((props: ItemCardProps) => {
                     }
                 </div>
             </div>
-            <button onClick={() => cartStore.addItem(props.item)}>Buy now</button>
+            <Button onClick={() => cartStore.addItem(props.item)} disabled={props.item.amount===0}>Buy now</Button>
         </div>
     )
 

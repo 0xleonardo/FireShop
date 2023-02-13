@@ -4,6 +4,7 @@ import commonStore from "./common.store";
 import authStore from "./auth/auth.store";
 import {NewOrder, OrderTransaction} from "../modals/order.modal";
 import {Item} from "../modals/item.modal";
+import {CartItemWithOnlyId} from "../components/UserProfile/OrderModal/order-modal.component";
 
 const superagent = superagentPromise(_superagent, global.Promise);
 
@@ -84,8 +85,8 @@ const ItemAgent = {
         requests.post(`/admin/item/add`, {item}),
     deleteItem: (id:number) =>
         requests.post(`/admin/item/delete`, {id:id}),
-    itemBought: (id:number[]) =>
-        requests.put('/item/bought', id)
+    itemBought: (ids:CartItemWithOnlyId[]) =>
+        requests.put('/items/bought', ids)
 };
 
 const Order = {
