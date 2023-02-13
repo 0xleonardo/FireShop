@@ -3,6 +3,7 @@ import authStore, {AuthStore} from "./auth/auth.store";
 import commonStore, {CommonStore} from "./common.store";
 import cartStore, {CartStore} from "./cart.store";
 import deliveryStore, {DeliveryStore} from "./delivery.store";
+import categoryStore, {CategoryStore} from "./category.store";
 
 export type RootStore = {
     userStore: UserStore;
@@ -10,6 +11,7 @@ export type RootStore = {
     authStore: AuthStore;
     cartStore: CartStore;
     deliveryStore: DeliveryStore;
+    categoryStore: CategoryStore;
 }
 
 const rootStore: RootStore = {
@@ -18,6 +20,7 @@ const rootStore: RootStore = {
     userStore,
     cartStore,
     deliveryStore,
+    categoryStore
 };
 
 export default rootStore;

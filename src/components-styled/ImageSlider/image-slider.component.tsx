@@ -77,6 +77,11 @@ const ImageSlider = (props: ImageSliderProps) => {
     const {slides} = props;
 
     const [currentIndex, setCurrentIndex] = useState(0);
+
+    if (slides.length === 0) {
+        return <h1>No Preview</h1>
+    }
+
     const goToPrevious = () => {
         const isFirstSlide = currentIndex === 0;
         const newIndex = isFirstSlide ? slides.length - 1 : currentIndex - 1;

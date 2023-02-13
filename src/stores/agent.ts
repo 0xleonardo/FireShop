@@ -66,8 +66,6 @@ const Auth = {
 const Category = {
     get: () =>
         requests.get('/categories'),
-    isValid: (name: string) =>
-        requests.post('/categories/isValid', {name: name}),
 };
 
 const ItemAgent = {

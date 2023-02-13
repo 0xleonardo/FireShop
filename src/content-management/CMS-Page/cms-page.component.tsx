@@ -6,7 +6,7 @@ import {PageNotFound} from "../../components/NavBar/page-not-found/page-not-foun
 import {useEffect, useState} from "react";
 import {Item} from "../../modals/item.modal";
 import {getAllItems} from "../../utils/api.utils";
-import {Pagination} from "../../components/Category/CategoryPageTestPagination/pagination.component";
+import {Pagination} from "../../components/Category/CategoryPage/pagination.component";
 import {ItemsListShow} from "../ItemsListShow/items-list.component";
 import {Button} from "primereact/button";
 import {CmsAddItemModal} from "../CMS-Add-Item-Modal/cms-add-modal.component";

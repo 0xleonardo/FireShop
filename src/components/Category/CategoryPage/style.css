@@ -22,5 +22,33 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
     gap: 15px;
 }
+
+.pagination {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.pagination select {
+    padding: 1px;
+}
+
+.pagination_numbers {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+}
+
+.pagination_numbers > button {
+    padding: 4px 6px;
+}
+
+.pagination_select {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+

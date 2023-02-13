@@ -1,7 +1,7 @@
 .item_card {
     gap: 10px;
     background-color: white;
-    max-width: 250px;
+    max-width: 200px;
     border-radius: 10px;
     border: 1px solid #cbcbcb;
     display: flex;
